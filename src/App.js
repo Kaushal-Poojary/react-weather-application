@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Weather from './components/Weather';
 import LoadingIndicator from './UI/LoadingIndicator';
 
+require('dotenv').config();
+
 import './app.css';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
   function handleSearch(e) {
     setSearch(e.target.value);
   }
+
+  const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
 
   async function geoHandler() {
     setSearch('');
@@ -32,7 +36,7 @@ function App() {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '0173291af0msh62b3ca25953f210p13d732jsn66b4d9f97708',
+        'X-RapidAPI-Key': apiKey,
         'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
       },
     };
